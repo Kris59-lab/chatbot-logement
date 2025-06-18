@@ -83,10 +83,11 @@ for msg in st.session_state.chat_log:
 if user_input := st.chat_input("Posez votre question..."):
     st.session_state.messages.append({"role": "user", "content": user_input})
     st.session_state.chat_log.append({"role": "user", "content": user_input})
-    
-     with st.chat_message("user"):
+
+    # Affichage immédiat du message utilisateur
+    with st.chat_message("user"):
         st.markdown(user_input)
-         
+
     try:
         response = generate_response(st.session_state.messages)
     except Exception as e:
@@ -97,3 +98,4 @@ if user_input := st.chat_input("Posez votre question..."):
 
     with st.chat_message("assistant"):
         st.markdown(response)
+
